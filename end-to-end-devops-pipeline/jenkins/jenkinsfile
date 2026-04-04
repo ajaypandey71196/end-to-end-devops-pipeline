@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone Code') {
+            steps {
+               git branch: 'main', url: 'https://github.com/Badrekamil/devops-project.git'
+            }
+        }
+
+        stage('Build Backend Image') {
+            steps {
+                sh 'docker build -t yourusername/backend ./backend'
+            }
+        }
+
+        stage('Build Frontend Image') {
+            steps {
+                sh 'docker build -t yourusername/frontend ./frontend'
+            }
+        }
+
+        stage('Push Images') {
+            steps {
+                withCredentials([string(credentialsId: 'docker-pass', variable: 'PASS')]) {
+                    sh '''
+                    echo $PASS | docker login -u yourusername --password-stdin
+                    docker push yourusername/backend
+                    docker push yourusername/frontend
+                    '''
+                }
+            }
+        }
+    }
+}
