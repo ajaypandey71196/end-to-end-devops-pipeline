@@ -1,0 +1,7 @@
+backend:
+  image: devopsdockerhub461/backend:latest
+  replicas: 2
+
+frontend:
+  image: devopsdockerhub461/frontend:latest
+  replicas: 2
