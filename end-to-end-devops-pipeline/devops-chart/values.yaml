@@ -1,7 +1,9 @@
 backend:
-  image: devopsdockerhub461/backend:latest
-  replicas: 2
+  image:
+    repository: devopsdockerhub461/backend
+    tag: latest  # Ye niche wala --set ise override karega
 
 frontend:
-  image: devopsdockerhub461/frontend:latest
-  replicas: 2
+  image:
+    repository: devopsdockerhub461/frontend
+    tag: latest

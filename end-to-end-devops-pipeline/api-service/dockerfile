@@ -1,13 +1,19 @@
-FROM node:18
-
+# Stage 1: Build Stage (Heavy Image)
+FROM node:18-slim AS builder
 WORKDIR /app
-
-COPY package.json .
-
+COPY package*.json ./
 RUN npm install
-
 COPY . .
 
-EXPOSE 4000
+# Stage 2: Final Runtime Stage (Ultra Light Image)
+FROM node:18-alpine
+WORKDIR /app
+# Sirf wahi files copy kar rahe hain jo app chalane ke liye chahiye
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/app.js ./app.js
 
+EXPOSE 4000
+# Hum 'node' user use kar rahe hain security ke liye (Non-root)
+USER node
 CMD ["node", "app.js"]

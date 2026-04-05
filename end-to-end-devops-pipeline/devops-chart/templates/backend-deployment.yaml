@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: api-service
-          image: "{{ .Values.backend.image }}"
+          image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
           ports:
             - containerPort: 4000
