@@ -68,7 +68,7 @@ I built a simple Node.js web app with an API service, containerized it using Doc
 Clone the repository:
 
 ```bash
-git clone https://github.com/Badrekamil/end-to-end-devops-pipeline.git
+git clone https://github.com/ajaypandey71196/end-to-end-devops-pipeline.git
 ```
 
 Then:
@@ -92,4 +92,4 @@ This project helped me understand:
 
 ## 👨‍💻 Author
 
-Badre Kamil 
+Ajay Pandey 
