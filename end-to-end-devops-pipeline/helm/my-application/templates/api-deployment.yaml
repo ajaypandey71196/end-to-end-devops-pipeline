@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api-service
-        image: badrekhan/devops-project1:api
+        image: {{ .Values.backend.repository }}:{{ .Values.backend.tag }}
         imagePullPolicy: Always
         ports:
         - containerPort: 4000
