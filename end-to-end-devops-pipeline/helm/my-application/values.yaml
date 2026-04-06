@@ -1,9 +1,9 @@
 backend:
   image:
     repository: devopsdockerhub461/backend
-    tag: 36
+    tag: 37
 
 frontend:
   image:
     repository: devopsdockerhub461/frontend
-    tag: 36
+    tag: 37
