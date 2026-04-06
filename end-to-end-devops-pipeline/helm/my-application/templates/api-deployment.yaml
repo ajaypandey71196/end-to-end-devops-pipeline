@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: api-service
 spec:
-  replicas: {{ .Values.backend.replicas }}
+  replicas: 2
   selector:
     matchLabels:
       app: api-service
@@ -13,7 +13,8 @@ spec:
         app: api-service
     spec:
       containers:
-        - name: api-service
-          image: {{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}
-          ports:
-            - containerPort: 4000
+      - name: api-service
+        image: badrekhan/devops-project1:api
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 4000
