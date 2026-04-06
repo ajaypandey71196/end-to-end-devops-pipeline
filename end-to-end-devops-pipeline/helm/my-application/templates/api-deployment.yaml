@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: api-service
-        image: {{ .Values.backend.repository }}:{{ .Values.backend.tag }}
+        # Fixed: Added double quotes around the image string
+        image: "{{ .Values.backend.repository }}:{{ .Values.backend.tag }}"
         imagePullPolicy: Always
         ports:
         - containerPort: 4000
